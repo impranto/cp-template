@@ -45,7 +45,7 @@ using namespace std;
 
 
 void solve(){
-    err(5);
+    
 }
 
 void file(){
