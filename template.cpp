@@ -31,6 +31,7 @@ using namespace std;
 #define line cout << "\n";
 #define print(a) cout << a << endl
 #define take(a) cin >> a
+#define err(a) cerr << a << endl
 
 #define MOD 1000000007
 #define PI acos(-1)
@@ -44,7 +45,7 @@ using namespace std;
 
 
 void solve(){
-
+    err(5);
 }
 
 void file(){
@@ -57,7 +58,9 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(NULL);
 
-    // file();
+    #ifndef ONLINE_JUDGE
+        file();
+    #endif
 
     int _t = 1;
     cin >> _t;
