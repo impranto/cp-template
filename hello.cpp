@@ -45,7 +45,7 @@ using namespace std;
 
 
 void solve(){
-    
+    print(5);
 }
 
 
@@ -54,7 +54,7 @@ int main(){
     cin.tie(NULL);
 
     int _t = 1;
-    cin >> _t;
+    // cin >> _t;
 
     for(int i=1; i<=_t; i++){
         // cout << "Case " << i << ": ";

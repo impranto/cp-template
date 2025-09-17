@@ -1,0 +1,29 @@
+#!/bin/bash
+
+file="$1.cpp"
+
+for f in input.txt output.txt error.txt test.txt; do
+    [ -f "$f" ] || touch "$f"
+done
+
+# Compile
+g++ "$file" -o ./a.out 2> error.txt
+if [ $? -ne 0 ]; then
+    echo "Compilation failed. Check error.txt"
+    exit 1
+fi
+
+# Run
+./a.out < input.txt > output.txt 2>> error.txt
+
+# Strip only trailing newlines before comparing
+clean_output=$(sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' output.txt)
+clean_test=$(sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' test.txt)
+
+if [ "$clean_output" = "$clean_test" ]; then
+    echo "Output matched with test.txt"
+else
+    echo "Output did NOT match with test.txt"
+    echo "Differences:"
+    diff -u <(echo "$clean_test") <(echo "$clean_output")
+fi
